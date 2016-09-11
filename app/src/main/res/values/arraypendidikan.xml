@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="agama">
+        <item>SD</item>
+        <item>SMP</item>
+        <item>SMA</item>
+        <item>S1</item>
+        <item>s2</item>
+    </string-array>
+</resources>

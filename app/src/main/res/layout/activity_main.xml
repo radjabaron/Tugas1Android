@@ -73,7 +73,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:layout_weight="0.04"
-            android:hint="Tanggal Lahir"
+            android:hint="Select Tanggal Lahir "
             android:textColor="@color/abc_primary_text_disable_only_material_light"
             android:textSize="14sp" />
 
@@ -87,26 +87,28 @@
             android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
         <RadioGroup
+            android:id="@+id/radioGroupJnsKelamin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.08"></RadioGroup>
+            android:layout_weight="0.08">
 
-        <RadioButton
-            android:id="@+id/radioButtonLaki"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:checked="false"
-            android:text="Laki - Laki" />
+            <RadioButton
+                android:id="@+id/radioButtonLaki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:checked="false"
+                android:text="Laki - Laki" />
 
-        <RadioButton
-            android:id="@+id/radioButtonPerempuan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="0.08"
-            android:checked="false"
-            android:text="Perempuan" />
+            <RadioButton
+                android:id="@+id/radioButtonPerempuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.08"
+                android:checked="false"
+                android:text="Perempuan" />
+        </RadioGroup>
 
         <TextView
             android:id="@+id/textView6"
@@ -120,7 +122,8 @@
         <Spinner
             android:id="@+id/spinnerAgama"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:entries="@array/agama" />
 
         <TextView
             android:id="@+id/textView4"
@@ -128,14 +131,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="0.03"
-            android:text="Asal Kota"
+            android:text="Asal Daerah"
             android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
         <Spinner
             android:id="@+id/spinnerProvinsi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.08" />
+            android:layout_weight="0.08"
+            android:entries="@array/provinsi" />
 
         <Spinner
             android:id="@+id/spinnerKota"
@@ -147,7 +151,7 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="0.08"
             android:text="Alamat Lengkap"
             android:textColor="@color/abc_primary_text_disable_only_material_light" />
@@ -163,7 +167,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -171,45 +175,52 @@
             android:text="Pendidikan Terakhir"
             android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
-        <CheckBox
-            android:id="@+id/checkBoxSD"
+        <Spinner
+            android:id="@+id/spinnerPendidikan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/pendidikan" />
+
+        <TextView
+            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="0.08"
-            android:checked="false"
-            android:text="SD" />
+            android:text="Keahlian"
+            android:textColor="@color/abc_primary_text_disable_only_material_light" />
 
         <CheckBox
-            android:id="@+id/checkBoxSMP"
+            android:id="@+id/checkBoxPEM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.08"
             android:checked="false"
-            android:text="SMP" />
+            android:text="Pemograman" />
 
         <CheckBox
-            android:id="@+id/checkBoxSMA"
+            android:id="@+id/checkBoxJAR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.08"
             android:checked="false"
-            android:text="SMA" />
+            android:text="Jaringan" />
 
         <CheckBox
-            android:id="@+id/checkBoxS1"
+            android:id="@+id/checkBoxDES"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.08"
             android:checked="false"
-            android:text="S1" />
+            android:text="Design" />
 
         <CheckBox
-            android:id="@+id/checkBoxS2"
+            android:id="@+id/checkBoxANI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.08"
             android:checked="false"
-            android:text="S2" />
+            android:text="Animasi" />
 
         <Button
             android:id="@+id/buttonProses"
