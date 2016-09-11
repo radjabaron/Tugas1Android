@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="agama">
+    <string-array name="pendidikan">
         <item>SD</item>
         <item>SMP</item>
         <item>SMA</item>

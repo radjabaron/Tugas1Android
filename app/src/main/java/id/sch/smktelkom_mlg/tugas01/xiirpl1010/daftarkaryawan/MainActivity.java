@@ -128,63 +128,92 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     }
 
     private void doClick() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Laporan Pengisian Data.");
-        builder.append("\n\n");
+        if (Validasi()) {
+            StringBuilder builder = new StringBuilder();
+            builder.append("Laporan Pengisian Data.");
+            builder.append("\n\n");
 
-        builder.append("Name           : ");
-        builder.append(etNama.getText().toString());
-        builder.append("\n\n");
+            builder.append("Name : ");
+            builder.append(etNama.getText().toString());
+            builder.append("\n\n");
 
-        builder.append("Tanggal Lahir  : ");
-        builder.append(etDate.getText().toString());
-        builder.append("\n\n");
+            builder.append("Tanggal Lahir : ");
+            builder.append(etDate.getText().toString());
+            builder.append("\n\n");
 
-        builder.append("Agama          : ");
-        builder.append(spAgama.getSelectedItem().toString());
-        builder.append("\n\n");
+            builder.append("Agama : ");
+            builder.append(spAgama.getSelectedItem().toString());
+            builder.append("\n\n");
 
-        builder.append("Asal Daerah    : ");
-        builder.append("\n\n");
-        builder.append(spProvinsi.getSelectedItem().toString());
-        builder.append(", Kota ");
-        builder.append(spKota.getSelectedItem().toString());
-        builder.append("\n\n\n");
+            builder.append("Asal Daerah : ");
+            builder.append("\n\n");
+            builder.append(spProvinsi.getSelectedItem().toString());
+            builder.append(", Kota ");
+            builder.append(spKota.getSelectedItem().toString());
+            builder.append("\n\n");
 
-        builder.append("Alamat Lengkap : ");
-        builder.append(etAlamat.getText().toString());
-        builder.append("\n");
-        builder.append("\n");
+            builder.append("Alamat Lengkap : ");
+            builder.append(etAlamat.getText().toString());
+            builder.append("\n\n");
 
-        String hasil = null;
+            String hasil = null;
 
-        if (rgKelamin.getCheckedRadioButtonId() != -1) {
-            RadioButton rb = (RadioButton)
-                    findViewById(rgKelamin.getCheckedRadioButtonId());
-            hasil = rb.getText().toString();
+            if (rgKelamin.getCheckedRadioButtonId() != -1) {
+                RadioButton rb = (RadioButton)
+                        findViewById(rgKelamin.getCheckedRadioButtonId());
+                hasil = rb.getText().toString();
+            }
+
+            if (hasil == null) {
+                builder.append("Jenis kelamin belum dipilih");
+            } else {
+                builder.append("Jenis Kelamin  : " + hasil);
+            }
+            builder.append("\n\n");
+
+            builder.append("Pendidikan Terakhir : ");
+            builder.append(spAgama.getSelectedItem().toString());
+            builder.append("\n\n");
+
+            builder.append("Keterampilan   : ");
+            builder.append("\n");
+            int startlen = builder.length();
+            if (cbPEM.isChecked()) builder.append(cbPEM.getText()).append("\n");
+            if (cbJAR.isChecked()) builder.append(cbJAR.getText()).append("\n");
+            if (cbDES.isChecked()) builder.append(cbDES.getText()).append("\n");
+            if (cbANI.isChecked()) builder.append(cbANI.getText()).append("\n");
+
+            if (builder.length() == startlen) builder.append("Tidak ada pada pilihan");
+
+            tvHasil.setText(builder);
         }
 
-        if (hasil == null) {
-            builder.append("Jenis kelamin belum dipilih");
+    }
+
+    private boolean Validasi() {
+        boolean valid = true;
+
+        String nama = etNama.getText().toString();
+        String tanggal = etDate.getText().toString();
+
+        if (nama.isEmpty()) {
+            etNama.setError("Nama Belum Diisi");
+            valid = false;
+        } else if (nama.length() < 3) {
+            etNama.setError("Nama Minimal 3 Karakter");
+            valid = false;
         } else {
-            builder.append("Jenis Kelamin  : " + hasil);
+            etNama.setError(null);
         }
 
-        builder.append("Pendidikan Terakhir : ");
-        builder.append(spAgama.getSelectedItem().toString());
-        builder.append("\n\n");
+        if (tanggal.isEmpty()) {
+            etDate.setError("Tanggal Belum diisi");
+            valid = false;
+        } else {
+            etDate.setError(null);
+        }
 
-        builder.append("Keterampilan   : ");
-        int startlen = builder.length();
-        if (cbPEM.isChecked()) builder.append(cbPEM.getText()).append("\n");
-        if (cbJAR.isChecked()) builder.append(cbJAR.getText()).append("\n");
-        if (cbDES.isChecked()) builder.append(cbDES.getText()).append("\n");
-        if (cbANI.isChecked()) builder.append(cbANI.getText()).append("\n");
-
-        if (builder.length() == startlen) builder.append("Tidak ada pada pilihan");
-
-        tvHasil.setText(builder);
-
+        return valid;
     }
 }
 
