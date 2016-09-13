@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -28,9 +29,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     RadioGroup rgKelamin;
     Spinner spProvinsi, spKota, spAgama, spPendidikan;
     CheckBox cbPEM, cbJAR, cbDES, cbANI;
-    Button bProses;
+    Button bProses, bTGL;
     TextView tvHasil;
-
+    LinearLayout lldaftar, llberhasil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         rbLK = (RadioButton) findViewById(R.id.radioButtonLaki);
         rbP = (RadioButton) findViewById(R.id.radioButtonPerempuan);
         rgKelamin = (RadioGroup) findViewById(R.id.radioGroupJnsKelamin);
+        lldaftar = (LinearLayout) findViewById(R.id.LinearLayoutDaftar);
+        llberhasil = (LinearLayout) findViewById(R.id.LinearLayoutBerhasil);
+
 
         spProvinsi = (Spinner) findViewById(R.id.spinnerProvinsi);
         spKota = (Spinner) findViewById(R.id.spinnerKota);
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         cbANI.setOnCheckedChangeListener(this);
 
         bProses = (Button) findViewById(R.id.buttonProses);
+        bTGL = (Button) findViewById(R.id.buttonTGL);
         tvHasil = (TextView) findViewById(R.id.textViewHasil);
 
         final String[][] arKota = {{"Jakarta Barat", "Jakarta Pusat", "Jakarta Selatan",
@@ -88,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             }
         });
 
-        etDate.setOnClickListener(new View.OnClickListener() {
+        bTGL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -113,11 +118,79 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             }
         });
 
+        findViewById(R.id.checkBoxPEM).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbPEM.setError(null);
+                cbDES.setError(null);
+                cbJAR.setError(null);
+                cbANI.setError(null);
+            }
+        });
+
+        findViewById(R.id.checkBoxDES).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbPEM.setError(null);
+                cbDES.setError(null);
+                cbJAR.setError(null);
+                cbANI.setError(null);
+            }
+        });
+
+        findViewById(R.id.checkBoxJAR).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbPEM.setError(null);
+                cbDES.setError(null);
+                cbJAR.setError(null);
+                cbANI.setError(null);
+            }
+        });
+
+        findViewById(R.id.checkBoxANI).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cbPEM.setError(null);
+                cbDES.setError(null);
+                cbJAR.setError(null);
+                cbANI.setError(null);
+            }
+        });
+
+        findViewById(R.id.radioButtonLaki).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rbLK.setError(null);
+                rbP.setError(null);
+            }
+        });
+
+        findViewById(R.id.radioButtonPerempuan).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rbLK.setError(null);
+                rbP.setError(null);
+            }
+        });
+
 
         findViewById(R.id.buttonProses).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 doClick();
+                lldaftar.setVisibility(View.VISIBLE);
+                lldaftar.setFocusableInTouchMode(true);
+                lldaftar.requestFocus();
+            }
+        });
+
+        findViewById(R.id.buttonDaftar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                llberhasil.setVisibility(View.VISIBLE);
+                llberhasil.setFocusableInTouchMode(true);
+                llberhasil.requestFocus();
             }
         });
     }
@@ -128,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     }
 
     private void doClick() {
+
         if (Validasi()) {
             StringBuilder builder = new StringBuilder();
             builder.append("Laporan Pengisian Data.");
@@ -146,7 +220,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             builder.append("\n\n");
 
             builder.append("Asal Daerah : ");
-            builder.append("\n\n");
             builder.append(spProvinsi.getSelectedItem().toString());
             builder.append(", Kota ");
             builder.append(spKota.getSelectedItem().toString());
@@ -172,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             builder.append("\n\n");
 
             builder.append("Pendidikan Terakhir : ");
-            builder.append(spAgama.getSelectedItem().toString());
+            builder.append(spPendidikan.getSelectedItem().toString());
             builder.append("\n\n");
 
             builder.append("Keterampilan   : ");
@@ -195,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         String nama = etNama.getText().toString();
         String tanggal = etDate.getText().toString();
+        String alamat = etAlamat.getText().toString();
 
         if (nama.isEmpty()) {
             etNama.setError("Nama Belum Diisi");
@@ -213,7 +287,35 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             etDate.setError(null);
         }
 
+        if (alamat.isEmpty()) {
+            etAlamat.setError("Alamat Belum diisi");
+            valid = false;
+        } else {
+            etAlamat.setError(null);
+        }
+
+        if (rgKelamin.getCheckedRadioButtonId() == -1) {
+            rbLK.setError("");
+            rbP.setError("");
+            valid = false;
+        } else {
+            rbLK.setError(null);
+            rbP.setError(null);
+        }
+
+        if (!cbPEM.isChecked() && !cbDES.isChecked() && !cbJAR.isChecked() && !cbANI.isChecked()) {
+            cbPEM.setError("");
+            cbDES.setError("");
+            cbJAR.setError("");
+            cbANI.setError("");
+            valid = false;
+        } else {
+            cbPEM.setError(null);
+            cbDES.setError(null);
+            cbJAR.setError(null);
+            cbANI.setError(null);
+        }
+
         return valid;
     }
 }
-
