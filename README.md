@@ -17,10 +17,24 @@ Dalam aplikasi ini terdapat validasi yaitu semua field harus terisi, tidak boleh
 
 <h3>2. Screenshot Aplikasi:</h3>
 
+Screenshoot 1:
+
 ![1](https://github.com/radjabaron/Tugas1Android/blob/master/photo_2016-09-13_17-24-03.jpg)
+
+Screenshoot 2:
+
 ![2](https://github.com/radjabaron/Tugas1Android/blob/master/photo_2016-09-13_17-24-00.jpg)
+
+Screenshoot 3:
+
 ![3](https://github.com/radjabaron/Tugas1Android/blob/master/photo_2016-09-13_17-24-05.jpg)
+
+Screenshoot 4:
+
 ![4](https://github.com/radjabaron/Tugas1Android/blob/master/photo_2016-09-13_17-24-08.jpg)
+
+Screenshoot 5:
+
 ![5](https://github.com/radjabaron/Tugas1Android/blob/master/photo_2016-09-13_17-24-07.jpg)
 
 <h3>3. Link apk:</h3>
